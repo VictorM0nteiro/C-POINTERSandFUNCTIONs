@@ -14,9 +14,29 @@
         printf("Digite o valor de c: ");
         scanf("%d", &c);
 
-        int *pont_a = &a;
-        int *pont_b = &b;
-        int *pont_c = &c;
+        int *pont_1 = &a;
+        int *pont_2 = &b;
 
-        
+        if((*pont_1 - *pont_2)*(*pont_1 - *pont_2) > 0){ 
+            // diferença de quadrados, no caso se p1 > p2, pa continua´ra apontando para p1
+        }
+        else{
+            // Se a <= b, atualiza p1 para apontar para b
+            pont_1 = pont_2;
+        }
+
+        // pont_1 aponta para o maior ente a e b
+        // agora comparar o maior de a e b com c
+
+        if((*pont_1-c)*(*pont_1-c) > 0){
+            //no caso se p1 > c, pa continua´ra apontando para p1
+        }
+        else{
+            *pont_1 = c;
+        }
+
+        printf("O maior valor eh: %d", *pont_1);
+
+
+
     }
