@@ -22,5 +22,4 @@
 
         printf("O menor valor eh: %.2lf\n", *pont_double);
 
-
     }
