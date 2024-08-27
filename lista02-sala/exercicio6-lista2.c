@@ -1,0 +1,1 @@
+//6. Crie o Struct funcionario que contém o nome e o salário do funcionário. Declare uma variável do tipo funcionario e faça um ponteiro para ele. Adicione e imprima as informações do funcionário que você acabou de declarar usando apenas o ponteiro.
