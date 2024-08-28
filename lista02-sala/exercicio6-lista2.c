@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //6. Crie o Struct funcionario que contém o nome e o salário do funcionário. Declare uma variável do tipo funcionario e faça um ponteiro para ele. Adicione e imprima as informações do funcionário que você acabou de declarar usando apenas o ponteiro.
 
 #include <stdio.h>
@@ -40,3 +41,6 @@
 
         return 0;
     }
+=======
+//6. Crie o Struct funcionario que contém o nome e o salário do funcionário. Declare uma variável do tipo funcionario e faça um ponteiro para ele. Adicione e imprima as informações do funcionário que você acabou de declarar usando apenas o ponteiro.
+>>>>>>> 186293c7a32609b2cb84f694007fb8c7c88cf4ec
