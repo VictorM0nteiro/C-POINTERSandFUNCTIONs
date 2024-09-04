@@ -7,18 +7,42 @@
     void removeVogais(char *str){
         int i, j = 0;
         for(int i = 0; str[i] != '\0'; i++){
-            if(str[i] != 'a' && str[i] != 'e' && str[i] != 'i' && str[i] != 'o' && str[i] != 'u' && str[i] != 'A' && str[i] != 'E' && str[i] != 'I' && str[i] != 'O' && str[i] != 'U'){
+            if(strchr("aeiouAEIOU", str[i]) == NULL){//A função strchr foi utilizada para verificar se o caractere atual é uma vogal, simplificando a lógica de remoção de vogais.
                 str[j] = str[i];
                 j++;
             }
         }
-        str[j] != '\0'; // finalizar a string modificada;
+        str[j] = '\0'; // finalizar a string mod, tem que ser = se for != da erro
     }
 
 
     int main(){
         int tamanho;
+        char *string;
+        int *pont_tamanho;
+        pont_tamanho = &tamanho;
+
         printf("Digite o tamanho da string: ");
+        scanf("%d", pont_tamanho);
+        getchar(); // limpar o buffer de teclado
 
+        // para alocar a string
+        string = (char *)malloc((*pont_tamanho+1) * sizeof(char));
+        if(string == NULL){
+            printf("Erro ao alocar memória!\n");
+            return 1;
+        }
 
+        //recebe o conteudo da string
+        printf("Digite a string: ");
+        scanf(" %[^\n]s", string);
+
+        removeVogais(string);
+        printf("String sem vogais: %s\n", string);
+
+        free(string);
+
+        return 0;
+
+        
     }

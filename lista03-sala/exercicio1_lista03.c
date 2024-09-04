@@ -9,7 +9,7 @@
         arr = (int*)malloc(5 * sizeof(int));// alocar dinamicamente 5
         if(arr == NULL){
             printf("Erro na alocacao de memoria\n");
-            
+            return 1; // "matar o programa em caso de erro"
         }
 
         printf("Digite 5 numeros inteiros\n");
