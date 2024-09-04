@@ -16,4 +16,34 @@
                 printf("O vetor deve ter eplo menos 10 elementos\n");
             }
         }while(*pont_tamanho < 10);
+
+        vetor = (float *)malloc((*pont_tamanho) *sizeof(float));
+        if(vetor == NULL){
+            printf("Erro ao alocar memoria!\n");
+            return 1;
+        }
+
+        floatVetor = (float *)vetor;
+
+        srand(time(NULL)); // definir a semente do gerador de numeros aleatorios, como o tempo atual
+
+        //float numAleatorio = rand() % 101; 
+        //o valor de rand é dividido por 101 ( 0 - 100), assim o resto da divisão é o valor utilizado
+        //infelizmente só da numeros inteiros, não é o caso
+
+        for( int i = 0; i < 10; i++){
+            *(floatVetor+i) = (float)rand() / (float)(RAND_MAX) * 100; // rand(entre 0 e 32767) / 32767 * 100
+        }
+        
+        //testes
+        // printf("%.2f\n", (float)RAND_MAX);
+        // printf("%.2f\n", (float)rand());
+        //printf("%.2f", numAleatorio);
+
+        printf("Os 10 primeiros valores do vetor: \n");
+        for(int i = 0; i < 10; i++){
+            printf("%.2f ", *(floatVetor+i));
+        }
+
+        free(vetor);
     }

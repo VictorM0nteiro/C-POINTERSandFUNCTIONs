@@ -25,5 +25,5 @@
 
         free(arr);
 
-
+        return 0;
     }
