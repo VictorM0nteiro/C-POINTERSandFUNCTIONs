@@ -9,10 +9,22 @@
         printf("Digite o numero de colunas: ");
         scanf("%d", &colunas);
 
+        //importante, alocação de matrizes
         int **matriz;
-        matriz = (int **)malloc (linhas*sizeof(int));
+        matriz = (int **)malloc(linhas*sizeof(int *));
 
-        matriz[0] = malloc(linhas*colunas*sizeof(int));
+        if(*matriz == NULL){
+            printf("Erro ao alocar a matriz!\n");
+            return 1;
+        }
+
+        for(int i=0; i<linhas; i++){
+            matriz[i] = (int*)malloc(colunas*sizeof(int*));
+            if(matriz == NULL){
+                printf("Erro ao alocar a matriz!\n");
+                return 1;
+            }
+        }
 
         printf("Digite os elementos da matriz:\n");
         for(int i = 0; i < linhas; i++){
@@ -41,10 +53,10 @@
             printf("Não existe\n");
         }
 
-        for(int i = 0; i < linhas; i++){
-            free(matriz[i]); // duas liberações necessárias na alocação de matrizes
+        // Libera a memória alocada
+        for(int i=0; i<linhas; i++){
+        free(matriz[i]);
         }
-        free(matriz); // duas liberações necessárias na alocação de matrizes
-
-
+        free(matriz);
+        return 0;
     }

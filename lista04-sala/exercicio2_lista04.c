@@ -10,14 +10,80 @@
 
         //declaração de matriz com alocação
         int **matriz;
-        matriz = (int**)malloc(linhas*sizeof(int));
-        matriz[0] = malloc (linhas*colunas*sizeof(int));
+        matriz = (int**)malloc(linhas*sizeof(int*));
+        if(matriz == NULL){ // não utilizar *
+            printf("Erro ao alocar a matriz!\n");
+            return 1;
+        }
+
+        for(int i = 0;i < linhas; i++){
+            matriz[i] = (int*)malloc(colunas*sizeof(int*));
+            if(matriz[i] == NULL){
+                printf("Erro ao alocar a matriz!\n");
+                return 1;
+            }
+        }
+        
+        printf("Digite os numeros da matriz: \n");
         for(int i = 0; i < linhas; i++){
-            matriz[i]= matriz[0] + i * colunas;
+            for(int j = 0; j < colunas; j++){
+                printf("Elemento [%d][%d]:", i, j);
+                scanf("%d", &matriz[i][j]);
+            }
+        }
+
+        //alocar matriz transposta //////////////////////////////////////////////
+        int **matriz_transposta;
+        matriz_transposta = (int **)calloc(linhas, sizeof(int*));
+        if(matriz_transposta == NULL){// não utilizar *
+            printf("Erro ao alocar a matriz!\n");
+            return 1;
+        }
+        for(int i = 0; i < linhas; i++){
+            matriz_transposta[i] = (int*)calloc(colunas, sizeof(int *));
+            if(matriz_transposta[i] == NULL){
+                printf("Erro ao alocar a matriz!\n");
+                return 1;
+            }
+        }
+
+        //construção da matriz transposta
+        for(int i = 0; i < linhas; i++){
+            for(int j = 0; j < colunas; j++){
+                matriz_transposta[j][i] = matriz[i][j];
+            }
+        }
+
+        //impressão da matriz original
+        printf("Impressao da matriz original [linhas][colunas]\n");
+        for(int i = 0; i < linhas; i++){
+            for(int j = 0; j < colunas; j++){
+                printf("%2d ", matriz[i][j]);
+            }
+            printf("\n");
+        }
+
+        //impressão matriz transposta
+        printf("Impressao da matriz original [colunas][linhas]\n");
+        for(int i = 0; i < colunas; i++){
+            for(int j = 0; j < linhas; j++){
+                printf("%2d ", matriz_transposta[i][j]);
+            }
+            printf("\n");
         }
 
         
 
-        free(matriz[0]);
+        
+
+        for(int i=0; i<linhas; i++){
+        free(matriz[i]);
+        }
         free(matriz);
+
+        for(int i=0; i<linhas; i++){
+        free(matriz_transposta[i]);
+        }
+        free(matriz_transposta);
+        return 0;
     }
