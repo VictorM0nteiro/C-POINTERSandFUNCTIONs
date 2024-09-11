@@ -71,10 +71,53 @@
             }
             printf("\n");
         }
+        printf("\n");
 
+        int maior[3] = {0};
+        int posicoes[3][2]= {{0,0},{0,0},{0,0}};
+
+        for(int i = 0; i < linhas; i++){
+            for(int j = 0; j < colunas; j++){
+                int valor = matriz[i][j];
+                if(valor > maior[0]){
+                    maior[2]=maior[1];
+                    maior[1]=maior[0];
+                    maior[0] = valor;
+
+                    posicoes[2][0]=posicoes[1][0];
+                    posicoes[2][1]=posicoes[1][1];
+
+                    posicoes[1][0]=posicoes[0][0];
+                    posicoes[1][1]=posicoes[0][1];
+
+                    posicoes[0][0]=i;
+                    posicoes[0][1]=j;
+                }
+                else if(valor>maior[1] && maior[0]>valor){
+                maior[2]=maior[1];
+                maior[1]=valor;
+
+                posicoes[2][0]=posicoes[1][0];
+                posicoes[2][1]=posicoes[1][1];
+
+                posicoes[1][0]=i;
+                posicoes[1][1]=j;
+                }
+                else if(valor>maior[2] && maior[1]>valor){
+                maior[2]=valor;
+
+                posicoes[2][0]=i;
+                posicoes[2][1]=j;
+                }
+            }
+        }
+        printf("Os tres maiores valores em ordem sao:\n");
+        for(int i = 0; i < 3; i++){
+            printf("Valor [%d]: %d\n", i+1, maior[i]);
+            printf("Linha: %d | Coluna: %d\n\n",posicoes[i][0]+1,posicoes[i][1]+1);
+        }
         
 
-        
 
         for(int i=0; i<linhas; i++){
         free(matriz[i]);
