@@ -12,7 +12,7 @@
 
         
         for(int i = 0; i < 10; i++){
-            *((int *)ponteiro_generico + i) = i + 1;
+            *((int *)ponteiro_generico+i) = i + 1;
         }
 
         printf("valores armazenados:\n");
