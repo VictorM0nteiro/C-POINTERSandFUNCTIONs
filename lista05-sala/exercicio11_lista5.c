@@ -10,8 +10,10 @@
         int n; 
         printf("Digite o valor de n: ");
         scanf("%d", &n);
+
         float resultado = serie_estranha(n);
         printf("O resultado da serie eh: %.2f\n", resultado);
+
         return 0;
     }
 
@@ -20,7 +22,7 @@
         // s = (1^2+1)/(1+3) + (2^2+1)/(2+3) == S=2/4+5/5
         float soma = 0;
 
-        for(int i = 1; i <= n; i++){
+        for (int i = 1; i <= n; i++) {
             soma += (float)(i * i + 1) / (i + 3);
         }
 
